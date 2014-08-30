@@ -1,0 +1,30 @@
+{
+  "name": "request-helpers",
+  "version": "0.0.1",
+  "description": "A collection of request helpers. Usable with express js (and consequently, sails.js).",
+  "main": "index.js",
+  "scripts": {
+    "test": "node_modules/mocha/bin/mocha -b"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SpoonX/request-helpers"
+  },
+  "keywords": [
+    "sails",
+    "express",
+    "request",
+    "helper",
+    "node"
+  ],
+  "author": "RWOverdijk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SpoonX/request-helpers/issues"
+  },
+  "homepage": "https://github.com/SpoonX/request-helpers",
+  "devDependencies": {
+    "assert": "^1.1.2",
+    "mocha": "^1.21.4"
+  }
+}
