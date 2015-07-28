@@ -7,8 +7,9 @@ A collection of request helpers. Usable with express js (and consequently, sails
 ## Methods
 Currently only 1.
 
-### pickParams(params, req, callback)
-Allows you to create an object from the params sent with the request. This method allows you to easily populate the object, and validate the params, making sure all required params were sent.
+### secureParameters (params, req[, forceCollect = false])
+Allows you to create a `Parameters` instance from the params sent with the request.
+This method allows you to easily populate the parameters, making sure all required params were sent.
 
 **Example:**
 
@@ -20,10 +21,17 @@ var paramBlueprint = [
   {param: 'nickname', default: 'anon'} // Optional. Default: anon
 ];
 
-helpers.pickParams(paramBlueprint, req, function (error, params) {
-  // Value of "err" is name of missing param.
-  // Params is object populated with the keys as defined in paramBlueprint.
-});
+var params = helpers.secureParameters(paramBlueprint, req);
+
+params.isValid(); // true
+params.asObject(); // Returns POJO of parameters
+params.get('key'); // Returns value for parameter `key`
+params.getMissing(); // Returns an array of missing parameters
+params.getMissingParameter(); // Returns the first missing parameter.
+
+// With forceCollect (third argument) you tell secureParameters to not stop collecting when it finds a missing parameter.
+Defaults to false.
+params = helpers.secureParameters(paramBlueprint, req);
 ```
 
 ## Contributing
