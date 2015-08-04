@@ -15,7 +15,7 @@ module.exports = {
       if (typeof param === 'object') {
         required = !(typeof param.required !== 'undefined' && !param.required);
 
-        if (param.default) {
+        if (typeof param.default !== 'undefined') {
           required = false;
           defaultValue = param.default;
         }

@@ -1,6 +1,6 @@
 {
   "name": "request-helpers",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A collection of request helpers. Usable with express js (and consequently, sails.js).",
   "main": "index.js",
   "scripts": {
