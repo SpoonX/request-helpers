@@ -15,10 +15,11 @@ This method allows you to easily populate the parameters, making sure all requir
 
 ```javascript
 var paramBlueprint = [
-  'username',                          // Required
-  'password',                          // Required.
-  {param: 'name', required: false},    // Optional. Default: null
-  {param: 'nickname', default: 'anon'} // Optional. Default: anon
+  'username',                           // Required
+  'password',                           // Required.
+  {param: 'name', required: false},     // Optional. Default: null
+  {param: 'nickname', default: 'anon'}, // Optional. Default: anon
+  {param: 'enable', cast: 'boolean'}    // Cast value to boolean
 ];
 
 var params = helpers.secureParameters(paramBlueprint, req);
