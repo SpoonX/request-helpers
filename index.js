@@ -1,4 +1,5 @@
-var Parameters = require('./lib/Parameters');
+var Parameters = require('./lib/Parameters'),
+    typer      = require('typer');
 
 module.exports = {
   secureParameters : function (rules, req, forceCollect) {
@@ -8,7 +9,8 @@ module.exports = {
     for (; i < rules.length; i++) {
       var param          = rules[i],
           required       = true,
-          defaultValue   = null;
+          defaultValue   = null,
+          cast           = 'smart';
 
       if (typeof param === 'object') {
         required = !(typeof param.required !== 'undefined' && !param.required);
@@ -18,11 +20,12 @@ module.exports = {
           defaultValue = param.default;
         }
 
+        cast  = param.cast || cast;
         param = param.param;
       }
 
       if (req.param(param)) {
-        parameters.set(param, req.param(param));
+        parameters.set(param, typer.cast(req.param(param), cast));
 
         continue;
       }
