@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <title>Request-helpers by SpoonX</title>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>Request-helpers</h1>
+        <h2>A collection of request helpers. Usable with express js (and consequently, sails.js).</h2>
+
+        <section id="downloads">
+          <a href="https://github.com/SpoonX/request-helpers/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/SpoonX/request-helpers/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/SpoonX/request-helpers" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h1>
+<a id="request-helpers" class="anchor" href="#request-helpers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Request helpers</h1>
+
+<p>A collection of request helpers. Usable with express js (and consequently, sails.js).</p>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p><code>npm install --save request-helpers</code></p>
+
+<h2>
+<a id="methods" class="anchor" href="#methods" aria-hidden="true"><span class="octicon octicon-link"></span></a>Methods</h2>
+
+<p>Currently only 1.</p>
+
+<h3>
+<a id="secureparameters-params-req-forcecollect--false" class="anchor" href="#secureparameters-params-req-forcecollect--false" aria-hidden="true"><span class="octicon octicon-link"></span></a>secureParameters (params, req[, forceCollect = false])</h3>
+
+<p>Allows you to create a <code>Parameters</code> instance from the params sent with the request.
+This method allows you to easily populate the parameters, making sure all required params were sent.</p>
+
+<p><strong>Example:</strong></p>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-k">var</span> paramBlueprint <span class="pl-k">=</span> [
+  <span class="pl-s"><span class="pl-pds">'</span>username<span class="pl-pds">'</span></span>,                           <span class="pl-c">// Required</span>
+  <span class="pl-s"><span class="pl-pds">'</span>password<span class="pl-pds">'</span></span>,                           <span class="pl-c">// Required.</span>
+  {param<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>name<span class="pl-pds">'</span></span>, required<span class="pl-k">:</span> <span class="pl-c1">false</span>},     <span class="pl-c">// Optional. Default: null</span>
+  {param<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>nickname<span class="pl-pds">'</span></span>, <span class="pl-k">default</span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>anon<span class="pl-pds">'</span></span>}, <span class="pl-c">// Optional. Default: anon</span>
+  {param<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>enable<span class="pl-pds">'</span></span>, cast<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>boolean<span class="pl-pds">'</span></span>}    <span class="pl-c">// Cast value to boolean</span>
+];
+
+<span class="pl-k">var</span> params <span class="pl-k">=</span> helpers.<span class="pl-c1">secureParameters</span>(paramBlueprint, req);
+
+params.<span class="pl-c1">isValid</span>(); <span class="pl-c">// true</span>
+params.<span class="pl-c1">asObject</span>(); <span class="pl-c">// Returns POJO of parameters</span>
+params.<span class="pl-c1">get</span>(<span class="pl-s"><span class="pl-pds">'</span>key<span class="pl-pds">'</span></span>); <span class="pl-c">// Returns value for parameter `key`</span>
+params.<span class="pl-c1">getMissing</span>(); <span class="pl-c">// Returns an array of missing parameters</span>
+params.<span class="pl-c1">getMissingParameter</span>(); <span class="pl-c">// Returns the first missing parameter.</span>
+
+<span class="pl-c">// With forceCollect (third argument) you tell secureParameters to not stop collecting when it finds a missing parameter.</span>
+Defaults to <span class="pl-c1">false</span>.
+params <span class="pl-k">=</span> helpers.<span class="pl-c1">secureParameters</span>(paramBlueprint, req);</pre></div>
+
+<h2>
+<a id="contributing" class="anchor" href="#contributing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contributing</h2>
+
+<p>Go for it. Submit a PR, with the tests, and watch the magic.</p>
+      </section>
+    </div>
+
+    
+  </body>
+</html>
