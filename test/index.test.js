@@ -1,8 +1,8 @@
 var helpers = require('../index.js'),
     assert  = require('assert'),
     req     = {
-      params : {},
-      param : function (key) {
+      params: {},
+      param : function(key) {
         if (this.params[key]) {
           return this.params[key];
         }
@@ -10,13 +10,13 @@ var helpers = require('../index.js'),
         return null;
       },
 
-      setParams: function (params) {
+      setParams: function(params) {
         this.params = params;
       }
     };
 
-describe('Request helpers', function () {
-  it('should tell me there is a missing param', function (done) {
+describe('Request helpers', function() {
+  it('should tell me there is a missing param', function(done) {
     var testParams = {foo: 1, bar: 2, bat: 3, baz: 4, bacon: 5};
 
     req.setParams(testParams);
@@ -29,7 +29,7 @@ describe('Request helpers', function () {
     done();
   });
 
-  it('should tell me exactly what parameter is missing', function (done) {
+  it('should tell me exactly what parameter is missing', function(done) {
     var testParams = {foo: 1, bar: 2, bat: 3, baz: 4, bacon: 5};
 
     req.setParams(testParams);
@@ -41,7 +41,7 @@ describe('Request helpers', function () {
     done();
   });
 
-  it('should tell me exactly what parameters are missing', function (done) {
+  it('should tell me exactly what parameters are missing', function(done) {
     var testParams = {foo: 1, bar: 2, bat: 3, baz: 4, bacon: 5};
 
     req.setParams(testParams);
@@ -55,7 +55,7 @@ describe('Request helpers', function () {
     done();
   });
 
-  it('should return a POJO', function (done) {
+  it('should return a POJO', function(done) {
     var testParams = {foo: 1, bar: 2, bat: 3, baz: 4, bacon: 5};
 
     req.setParams(testParams);
@@ -67,7 +67,16 @@ describe('Request helpers', function () {
     done();
   });
 
-  it('should default to apple', function (done) {
+  it('should work with simple pojo', function(done) {
+    var testParams = {foo: 1, bar: 2, bat: 3, baz: 4, bacon: 5};
+    var params     = helpers.secureParameters(['foo', 'bar', 'bacon'], testParams);
+
+    assert.deepEqual(params.asObject(), {foo: 1, bar: 2, bacon: 5});
+
+    done();
+  });
+
+  it('should default to apple', function(done) {
     req.setParams({});
 
     var params = helpers.secureParameters([{param: 'defaultMe', default: 'apple'}], req);

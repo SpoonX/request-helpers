@@ -1,6 +1,6 @@
 {
   "name": "request-helpers",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "A collection of request helpers. Usable with express js (and consequently, sails.js).",
   "main": "index.js",
   "scripts": {
@@ -17,8 +17,8 @@
     "helper",
     "node"
   ],
-  "author": "RWOverdijk",
-  "license": "ISC",
+  "author": "RWOverdijk <wesley@spoonx.nl>",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/SpoonX/request-helpers/issues"
   },

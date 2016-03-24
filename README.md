@@ -7,9 +7,12 @@ A collection of request helpers. Usable with express js (and consequently, sails
 ## Methods
 Currently only 1.
 
-### secureParameters (params, req[, forceCollect = false])
+### secureParameters (params, req|object[, forceCollect = false])
 Allows you to create a `Parameters` instance from the params sent with the request.
 This method allows you to easily populate the parameters, making sure all required params were sent.
+
+**Note:** This method also supports the use of a simple object in stead of using `req`.
+This can be useful when you wish to secureParameters from parseCriteria (sails.js).
 
 **Example:**
 
